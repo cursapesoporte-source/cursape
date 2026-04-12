@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="refresh" content="3;url=https://wa.me/51982540710?text=Hola%2C%20quiero%20separar%20mi%20cupo%20para%20el%20curso%20Manos%20A%20La%20Placa%20al%20precio%20especial%21">
+  <title>Cursape</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background-color: #0A1628;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      font-family: 'Arial', sans-serif;
+      color: white;
+    }
+    .logo { font-size: 2.5rem; font-weight: 900; color: #00AAFF; }
+    .logo span { color: #00E5FF; }
+    .msg { margin-top: 20px; font-size: 1.1rem; color: #ccc; }
+    .dots { color: #00AAFF; }
+    .barra {
+      margin-top: 30px;
+      width: 200px; height: 4px;
+      background: #1a2a3a;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .progreso {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #00AAFF, #00E5FF);
+      border-radius: 10px;
+      animation: cargar 3s linear forwards;
+    }
+    @keyframes cargar { to { width: 100%; } }
+  </style>
+</head>
+<body>
+  <div class="logo">Curs<span>ape</span></div>
+  <p class="msg">¡Hola! En un momento serás redirigido<span class="dots">...</span></p>
+  <div class="barra"><div class="progreso"></div></div>
+
+  <script>
+    setTimeout(function() {
+      window.location.href = "https://wa.me/51982540710?text=Hola%2C%20quiero%20separar%20mi%20cupo%20para%20el%20curso%20Manos%20A%20La%20Placa%20al%20precio%20especial%21";
+    }, 3000);
+  </script>
+</body>
+</html>
