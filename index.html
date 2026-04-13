@@ -2,8 +2,19 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="refresh" content="3;url=https://wa.me/51982540710?text=Hola%2C%20quiero%20separar%20mi%20cupo%20para%20el%20curso%20Manos%20A%20La%20Placa%20al%20precio%20especial%21">
   <title>Cursape</title>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-062ZRBTKTF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-062ZRBTKTF');
+  </script>
+
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -13,16 +24,34 @@
       align-items: center;
       justify-content: center;
       height: 100vh;
-      font-family: 'Arial', sans-serif;
+      font-family: Arial, sans-serif;
       color: white;
+      text-align: center;
+      padding: 20px;
     }
-    .logo { font-size: 2.5rem; font-weight: 900; color: #00AAFF; }
+    .logo {
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: #00AAFF;
+      letter-spacing: 2px;
+    }
     .logo span { color: #00E5FF; }
-    .msg { margin-top: 20px; font-size: 1.1rem; color: #ccc; }
-    .dots { color: #00AAFF; }
+    .tagline {
+      margin-top: 8px;
+      font-size: 0.85rem;
+      color: #4a7a9b;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+    .msg {
+      margin-top: 28px;
+      font-size: 1.1rem;
+      color: #ccc;
+    }
     .barra {
-      margin-top: 30px;
-      width: 200px; height: 4px;
+      margin-top: 20px;
+      width: 220px;
+      height: 4px;
       background: #1a2a3a;
       border-radius: 10px;
       overflow: hidden;
@@ -35,17 +64,47 @@
       animation: cargar 3s linear forwards;
     }
     @keyframes cargar { to { width: 100%; } }
+    .btn {
+      margin-top: 35px;
+      background: linear-gradient(90deg, #00AAFF, #00E5FF);
+      color: #0A1628;
+      font-weight: 900;
+      font-size: 1.1rem;
+      padding: 15px 36px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      box-shadow: 0 0 20px rgba(0, 170, 255, 0.4);
+      transition: transform 0.2s;
+    }
+    .btn:hover { transform: scale(1.05); }
+    .sub {
+      margin-top: 12px;
+      font-size: 0.82rem;
+      color: #4a7a9b;
+    }
   </style>
 </head>
 <body>
+
   <div class="logo">Curs<span>ape</span></div>
-  <p class="msg">¡Hola! En un momento serás redirigido<span class="dots">...</span></p>
+  <p class="tagline">Formación Técnica Online</p>
+
+  <p class="msg">¡Hola! Conectando con un asesor...</p>
   <div class="barra"><div class="progreso"></div></div>
+
+  <a class="btn" href="https://wa.me/51982540710?text=Hola%2C%20quiero%20separar%20mi%20cupo%20para%20el%20curso%20Manos%20A%20La%20Placa%20al%20precio%20especial%21">
+    💬 Abrir WhatsApp
+  </a>
+  <p class="sub">Si no abre automáticamente, toca el botón</p>
 
   <script>
     setTimeout(function() {
       window.location.href = "https://wa.me/51982540710?text=Hola%2C%20quiero%20separar%20mi%20cupo%20para%20el%20curso%20Manos%20A%20La%20Placa%20al%20precio%20especial%21";
     }, 3000);
   </script>
+
 </body>
 </html>
