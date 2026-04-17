@@ -836,32 +836,42 @@ main, .header, .footer, .whatsapp-float{
 
   const header = document.querySelector('.header');
   const navLinks = document.querySelectorAll('a[href^="#"]');
+  let activeAnimation = null;
 
-  function smoothScrollTo(targetY, duration = 950) {
+  function easeOutQuint(t) {
+    return 1 - Math.pow(1 - t, 5);
+  }
+
+  function easeHybrid(t) {
+    return t < 0.22
+      ? 3.2 * t * t
+      : easeOutQuint((t - 0.22) / 0.78);
+  }
+
+  function smoothScrollTo(targetY, duration = 900) {
+    if (activeAnimation) cancelAnimationFrame(activeAnimation);
+
     const startY = window.pageYOffset;
     const distance = targetY - startY;
     let startTime = null;
 
-    function easeInOutCubic(t) {
-      return t < 0.5
-        ? 4 * t * t * t
-        : 1 - Math.pow(-2 * t + 2, 3) / 2;
-    }
-
-    function animation(currentTime) {
+    function step(currentTime) {
       if (!startTime) startTime = currentTime;
-      const timeElapsed = currentTime - startTime;
-      const progress = Math.min(timeElapsed / duration, 1);
-      const eased = easeInOutCubic(progress);
+
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = easeHybrid(progress);
 
       window.scrollTo(0, startY + distance * eased);
 
       if (progress < 1) {
-        requestAnimationFrame(animation);
+        activeAnimation = requestAnimationFrame(step);
+      } else {
+        activeAnimation = null;
       }
     }
 
-    requestAnimationFrame(animation);
+    activeAnimation = requestAnimationFrame(step);
   }
 
   navLinks.forEach(link => {
@@ -875,10 +885,16 @@ main, .header, .footer, .whatsapp-float{
       e.preventDefault();
 
       const headerHeight = header ? header.offsetHeight : 0;
-      const extraOffset = window.innerWidth > 768 ? 18 : 10;
+      const isMobile = window.innerWidth <= 768;
+      const extraOffset = isMobile ? 8 : 20;
+      const distance = Math.abs(target.getBoundingClientRect().top);
+      const duration = isMobile
+        ? Math.min(780, Math.max(520, distance * 0.75))
+        : Math.min(1350, Math.max(850, distance * 0.7));
+
       const targetY = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - extraOffset;
 
-      smoothScrollTo(targetY, window.innerWidth > 768 ? 1100 : 700);
+      smoothScrollTo(targetY, duration);
     });
   });
 </script>
